@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Words Keeper</string>
+    <string name="add_word_title">Add Word</string>
+    <string name="save">Save</string>
+    <string name="edit_word">Edit Word</string>
+    <string name="delete_word">Delete Word</string>
+    <string name="job_service_notification">Job Service notification</string>
+    <string name="notification_channel_description">Notifications from Job Service</string>
+    <string name="schedule_job">Schedule Job</string>
+    <string name="cancel_jobs">Cancel Jobs</string>
+    <string name="job_service">Job Service</string>
+    <string name="job_running">Your Job ran to completion!</string>
+    <string name="job_scheduled">Job Scheduled, will run when the constraints are met</string>
+    <string name="no_constraint_toast">Please set at least one constraint</string>
+    <string name="jobs_canceled">Jobs Canceled</string>
+    <string name="time_to_open">Pick time to open at</string>
+    <string name="create_at">created at: %s</string>
+
+    <array name="time_slot">
+        <item>1 mins</item>
+        <item>3 mins</item>
+        <item>5 mins</item>
+        <item>10 mins</item>
+        <item>15 mins</item>
+        <item>30 mins</item>
+    </array>
+</resources>
