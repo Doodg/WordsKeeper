@@ -1,10 +1,8 @@
 package com.enigma.wordskeeper.addwords
 
-import android.app.TimePickerDialog
-import android.app.TimePickerDialog.OnTimeSetListener
+
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
@@ -15,7 +13,6 @@ import com.enigma.wordskeeper.R
 import kotlinx.android.synthetic.main.activity_add_word.*
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.time.milliseconds
 
 
 class AddWordActivity : AppCompatActivity() {
@@ -27,6 +24,7 @@ class AddWordActivity : AppCompatActivity() {
     var selectedOpenTime: Long = 0
     private var timeSlotArray = arrayListOf(1, 3, 5, 10, 15, 30)
     private lateinit var sleepTimerListAdapter: TimerListAdapter
+    private  var wordModel:WordModel? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_word)
@@ -35,13 +33,13 @@ class AddWordActivity : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.add_word_title)
         createDateTextView.text = Calendar.getInstance().time.time.convertTOTimeFormat()
         if (intent.hasExtra("EXTRA_WORD")) {
-            wordEditText.setText((intent.getSerializableExtra("EXTRA_WORD") as? WordModel)?.word)
+            wordModel = ((intent.getSerializableExtra("EXTRA_WORD") as? WordModel))
+            wordEditText.setText(wordModel?.word)
             wordEditText.isEnabled = false
-            createDateTextView.text =
-                (intent.getSerializableExtra("EXTRA_WORD") as? WordModel)?.creationDate?.convertTOTimeFormat()
+            createDateTextView.text = wordModel?.creationDate?.convertTOTimeFormat()
             saveWordButton.text = getString(R.string.delete_word)
-            selectedOpenTime =
-                (intent.getSerializableExtra("EXTRA_WORD") as? WordModel)?.openWordAt!!
+            selectedOpenTime = wordModel?.openWordAt!!
+
             UnlockTextView.hide()
             recyclerViewTimeSlot.hide()
         }
@@ -63,11 +61,12 @@ class AddWordActivity : AppCompatActivity() {
             } else if (selectedOpenTime <= 0 && !intent.hasExtra("EXTRA_WORD")) {
                 Toast.makeText(this, "MUST select time ", Toast.LENGTH_LONG).show()
             } else {
-                if (intent.hasExtra("EXTRA_WORD")) {
-                    (intent.getSerializableExtra("EXTRA_WORD") as? WordModel)?.id?.let { it1 ->
+                if (wordModel !=null) {
+                    wordModel?.id?.let { it1 ->
                         addWordViewModel.deleteWord(
                             it1
                         )
+                        WorkManager.getInstance(this).cancelUniqueWork(wordModel?.creationDate.toString()).toString()
                     }
                 } else {
                     val creationTime = Calendar.getInstance().time.time
@@ -84,7 +83,7 @@ class AddWordActivity : AppCompatActivity() {
                                 .build()
                         ).setInitialDelay(selectedOpenTime, TimeUnit.MINUTES)
                         .build()
-                    WorkManager.getInstance(this).enqueue(workRequest)
+                    WorkManager.getInstance(this).enqueueUniqueWork(creationTime.toString(),ExistingWorkPolicy.REPLACE,workRequest)
                 }
                 Toast.makeText(this, "Saved successfully ", Toast.LENGTH_LONG).show()
                 finish()

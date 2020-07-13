@@ -3,14 +3,14 @@ package com.enigma.wordskeeper.addwords
 import android.os.AsyncTask
 import androidx.lifecycle.ViewModel
 import com.enigma.wordskeeper.WordModel
-import com.enigma.wordskeeper.data.WordsRepository
+import com.enigma.wordskeeper.data.WordsRepositoryImpl
 
 
 class AddWordViewModel : ViewModel() {
-    private var repository: WordsRepository
+    private var repository: WordsRepositoryImpl
 
     init {
-        repository = WordsRepository()
+        repository = WordsRepositoryImpl()
     }
 
     fun saveWord(wordModel: WordModel) {

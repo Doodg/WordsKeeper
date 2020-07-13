@@ -7,7 +7,7 @@ import androidx.paging.PagedList
 import com.enigma.wordskeeper.WordModel
 import com.enigma.wordskeeper.WordsKeeperApp
 
-class WordsRepository {
+class WordsRepositoryImpl :WordRepository{
     private var wordsLiveData: LiveData<PagedList<WordModel>>
     private val wordsKeeperDatabase by lazy {
         WordsKeeperDatabase.getInstance(WordsKeeperApp.getInstance())
@@ -18,24 +18,24 @@ class WordsRepository {
             wordsKeeperDatabase.wordDao().getAllWords()
 
         val pagedListBuilder: LivePagedListBuilder<Int, WordModel> =
-            LivePagedListBuilder<Int, WordModel>(
+            LivePagedListBuilder(
                 factory,
                 5
             )
         wordsLiveData = pagedListBuilder.build()
     }
 
-    fun getWordsLiveData() = wordsLiveData
+    override fun getWordsLiveData() = wordsLiveData
 
-    fun saveWord(wordModel: WordModel) {
+    override fun saveWord(wordModel: WordModel) {
         wordsKeeperDatabase.wordDao().saveWord(wordModel)
     }
 
-    fun removeWord(id: Long) {
+    override fun removeWord(id: Long) {
         wordsKeeperDatabase.wordDao().removeWord(id)
     }
 
-    fun deleteAllWords() {
+    override fun deleteAllWords() {
         wordsKeeperDatabase.wordDao().deleteAll()
 
     }
