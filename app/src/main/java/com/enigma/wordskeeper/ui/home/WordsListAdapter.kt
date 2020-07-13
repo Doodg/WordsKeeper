@@ -1,4 +1,4 @@
-package com.enigma.wordskeeper.home
+package com.enigma.wordskeeper.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.enigma.wordskeeper.R
-import com.enigma.wordskeeper.WordModel
+import com.enigma.wordskeeper.repository.model.WordModel
 import com.enigma.wordskeeper.convertTOTimeFormat
 import kotlinx.android.synthetic.main.word_list_item.view.*
 

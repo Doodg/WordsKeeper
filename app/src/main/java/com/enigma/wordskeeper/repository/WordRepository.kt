@@ -1,8 +1,8 @@
-package com.enigma.wordskeeper.data
+package com.enigma.wordskeeper.repository
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
-import com.enigma.wordskeeper.WordModel
+import com.enigma.wordskeeper.repository.model.WordModel
 
 interface WordRepository{
 

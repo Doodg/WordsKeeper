@@ -1,7 +1,7 @@
-package com.enigma.wordskeeper.home
+package com.enigma.wordskeeper.ui.home
 
 import androidx.recyclerview.widget.DiffUtil
-import com.enigma.wordskeeper.WordModel
+import com.enigma.wordskeeper.repository.model.WordModel
 
 class WordsDiffCallback : DiffUtil.ItemCallback<WordModel>() {
 

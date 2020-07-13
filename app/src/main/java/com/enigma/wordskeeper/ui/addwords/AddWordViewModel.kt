@@ -1,9 +1,9 @@
-package com.enigma.wordskeeper.addwords
+package com.enigma.wordskeeper.ui.addwords
 
 import android.os.AsyncTask
 import androidx.lifecycle.ViewModel
-import com.enigma.wordskeeper.WordModel
-import com.enigma.wordskeeper.data.WordsRepositoryImpl
+import com.enigma.wordskeeper.repository.model.WordModel
+import com.enigma.wordskeeper.repository.WordsRepositoryImpl
 
 
 class AddWordViewModel : ViewModel() {

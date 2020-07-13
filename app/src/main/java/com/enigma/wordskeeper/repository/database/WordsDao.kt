@@ -1,8 +1,8 @@
-package com.enigma.wordskeeper.data
+package com.enigma.wordskeeper.repository.database
 
 import androidx.paging.DataSource
 import androidx.room.*
-import com.enigma.wordskeeper.WordModel
+import com.enigma.wordskeeper.repository.model.WordModel
 
 
 @Dao

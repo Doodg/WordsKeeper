@@ -1,4 +1,4 @@
-package com.enigma.wordskeeper.addwords
+package com.enigma.wordskeeper.ui.addwords
 
 import android.content.Context
 import android.view.LayoutInflater

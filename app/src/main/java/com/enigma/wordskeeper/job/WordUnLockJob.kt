@@ -1,4 +1,4 @@
-package com.enigma.wordskeeper
+package com.enigma.wordskeeper.job
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -6,13 +6,14 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.enigma.wordskeeper.addwords.AddWordActivity
-import com.enigma.wordskeeper.data.WordsKeeperDatabase
-import com.enigma.wordskeeper.home.HomeActivity
+import com.enigma.wordskeeper.R
+import com.enigma.wordskeeper.decrypt
+import com.enigma.wordskeeper.repository.model.WordModel
+import com.enigma.wordskeeper.repository.database.WordsKeeperDatabase
+import com.enigma.wordskeeper.ui.home.HomeActivity
 
 
 class WordUnLockJob(val context: Context, workerParameters: WorkerParameters) :

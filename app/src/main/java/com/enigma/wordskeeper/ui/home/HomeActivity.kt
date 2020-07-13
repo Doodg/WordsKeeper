@@ -1,4 +1,4 @@
-package com.enigma.wordskeeper.home
+package com.enigma.wordskeeper.ui.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,12 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
 import com.enigma.wordskeeper.*
-import com.enigma.wordskeeper.addwords.AddWordActivity
+import com.enigma.wordskeeper.repository.model.WordModel
+import com.enigma.wordskeeper.ui.addwords.AddWordActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.concurrent.TimeUnit
 
 
 class HomeActivity : AppCompatActivity() {

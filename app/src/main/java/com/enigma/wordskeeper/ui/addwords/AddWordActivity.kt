@@ -1,4 +1,4 @@
-package com.enigma.wordskeeper.addwords
+package com.enigma.wordskeeper.ui.addwords
 
 
 import android.os.Bundle
@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.work.*
 import com.enigma.wordskeeper.*
 import com.enigma.wordskeeper.R
+import com.enigma.wordskeeper.job.WordUnLockJob
+import com.enigma.wordskeeper.repository.model.WordModel
 import kotlinx.android.synthetic.main.activity_add_word.*
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -24,7 +26,7 @@ class AddWordActivity : AppCompatActivity() {
     var selectedOpenTime: Long = 0
     private var timeSlotArray = arrayListOf(1, 3, 5, 10, 15, 30)
     private lateinit var sleepTimerListAdapter: TimerListAdapter
-    private  var wordModel:WordModel? = null
+    private  var wordModel: WordModel? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_word)

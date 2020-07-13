@@ -1,4 +1,4 @@
-package com.enigma.wordskeeper
+package com.enigma.wordskeeper.repository.model
 
 import androidx.room.Entity
 import androidx.room.Index

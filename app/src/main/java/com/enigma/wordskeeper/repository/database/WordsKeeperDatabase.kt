@@ -1,10 +1,10 @@
-package com.enigma.wordskeeper.data
+package com.enigma.wordskeeper.repository.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.enigma.wordskeeper.WordModel
+import com.enigma.wordskeeper.repository.model.WordModel
 
 @Database(entities = arrayOf(WordModel::class), version = 2
     , exportSchema = false)
