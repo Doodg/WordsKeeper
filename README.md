@@ -17,3 +17,6 @@ Android App that takes note and encrypts it for a specific period then unencrypt
 - Paging
 - Worker
 - Stetho
+
+## Contribution
+Feel free to fork and work on the project 
